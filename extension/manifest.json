@@ -3,8 +3,25 @@
     "description": "Prompt a more polite message.",
     "version": "1.0",
     "manifest_version": 3,
+    "web_accessible_resources": [{
+        "matches": ["<all_urls>"],
+        "resources": ["../config.json"]
+      }],
+    "content_scripts": [{
+        "js": [
+            "scripts/require.js",
+            "scripts/content.js",
+            "popup.js"
+        ]
+      }],
     "action": {
       "default_popup": "hello.html",
       "default_icon": "bp.png"
-    }
+    },
+    "background": {
+    	"service_worker": "background.js"
+    },
+    "permissions": [
+        "notifications", "tabs", "activeTab", "background"
+    ]
   }
