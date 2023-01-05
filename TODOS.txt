@@ -1,0 +1,1 @@
+- The popup.js file is probably not needed anymore. Maybe we should delete it
