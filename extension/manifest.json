@@ -10,7 +10,7 @@
     "content_scripts": [{
         "matches": ["http://*/*"],
         "js": [
-            "popup.js"
+            "background.js"
         ]
       }],
     "action": {
@@ -21,7 +21,7 @@
     	"service_worker": "background.js"
     },
     "permissions": [
-        "notifications", "tabs", "activeTab", "background", "contextMenus"
+        "background", "contextMenus"
     ],
     "icons": {
       "16": "./images/icon-bitty.png"

@@ -9,12 +9,10 @@ chrome.runtime.onInstalled.addListener(() => {
 
 chrome.contextMenus.onClicked.addListener((clickData) => {
     if (clickData.menuItemId == "bpolite" && clickData.selectionText) {
-        console.log(clickData, clickData.selectionText);
-
         const secret = "";
         const baseUrl = "https://api.openai.com/v1/completions";
-        const model = 'text-davinci-003';
-        const prompt = `Give me a very clear and professional re-wording of the following paragraph: ${clickData.selectionText}`;
+        const model = 'text-ada-001';
+        const prompt = `Give me a single, clear and professional re-wording of the following paragraph: ${clickData.selectionText}`;
         const body = {
             model: model,
             prompt: prompt,
@@ -32,16 +30,9 @@ chrome.contextMenus.onClicked.addListener((clickData) => {
         })
         .then(response => response.json())
         .then(res => {
-            res.choices.forEach(element => {
-                console.log(element.text);
+            res.choices.forEach((element, id) => {
+                console.log(`Procession ${id}: ${element.text}\n`);
             });
-            // chrome.notifications.create('NOTFICATION_ID', {
-            //     type: 'basic',
-            //     iconUrl: 'path',
-            //     title: 'notification title',
-            //     message: 'notification message',
-            //     priority: 2
-            // })
         });
     }
 });
