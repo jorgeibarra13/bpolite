@@ -3,9 +3,10 @@
     const textarea = document.activeElement;
     const nodeName = document.activeElement.nodeName.toLocaleLowerCase();
 
+    if (nodeName.includes('p') || nodeName.includes('div') || nodeName.includes('body')) return;
+
     if (nodeName.includes('input') || nodeName.includes('textarea')) {
       if(typeof textarea.selectionStart === 'number' && typeof textarea.selectionEnd === 'number') {
-        // All browsers except IE
         var start = textarea.selectionStart;
         var end = textarea.selectionEnd;
 
