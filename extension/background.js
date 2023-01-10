@@ -13,35 +13,36 @@ async function getCurrentTab() {
 }
 
 chrome.contextMenus.onClicked.addListener(async (clickData) => {
-  if (clickData.menuItemId == "bpolite" && clickData.selectionText) {
+  const message = clickData?.selectionText;
+
+  if (clickData.menuItemId == "bpolite" && message) {
     const tab = await getCurrentTab();
-      const secret = "";
-      const baseUrl = "https://api.openai.com/v1/completions";
-      const model = 'text-ada-001';
-      const prompt = `Give me a single, clear and professional re-wording of the following paragraph: ${clickData.selectionText}`;
-      const body = {
-          model: model,
-          prompt: prompt,
-          max_tokens: 250,
-          temperature: 0
+    const baseUrl = "https://bpolite-backend.vercel.app/api/transform-text";
+    const body = { message };
+
+    fetch(baseUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body),
+    })
+    .then(res => {
+      if (res.status !== 200) {
+        const error = new Error(JSON.stringify(res));
+        throw error;
       }
-  
-      fetch(baseUrl, {
-          method: 'POST',
-          headers: {
-              'Authorization': `Bearer ${secret}`,
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(body)
-      })
-      .then(response => response.json())
-      .then(res => {
-        chrome.tabs.sendMessage(tab.id,
-          {
-            // need some optional chaining in here 
-            procession: res.choices[0].text
-          }
-        );
-      });
+      return res.json();
+    })
+    .then(res => {
+      chrome.tabs.sendMessage(tab.id,
+        {
+          procession: res?.transformed_text
+        }
+      );
+    })
+    .catch((error) => {
+      console.error(`Error ${error.statusText}. Code:${error.status}`);
+    });
   }
 });
