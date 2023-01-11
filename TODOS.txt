@@ -1,6 +1,13 @@
+- [IN PROGRESS] make the api handle the secret through a key vault or some other secure secret storage
+- [NOT STARTED] show a loader or indicator that the request is being processed
+- [NOT STARTED] have a timeout for the how often you can make the calls
+- [NOT STARTED] have prettier extension icons
+- [NOT STARTED] obfuscate the code?
+- [NOT STARTED] consider other types of elements that could be editable and expand on it
+
 - [DONE] The popup.js file is probably not needed anymore. Maybe we should delete it
-- Display the processed message in a textbox. ie I type in a mail a body, select, right click and it shows a suggestion after the text, if I click enter on my keyboard it swaps the current text with the processed one.
-- Put this in a server somewhere, and expose an API.
-  - create an api that does the calls instead
-    - make the api handle the secret through a key vault or some other secure secret storage 
-  - make the extension call that API instead
+- [CHANGED] Display the processed message in a textbox. ie I type in a mail a body, select, right click and it shows a suggestion after the text, if I click enter on my keyboard it swaps the current text with the processed one.
+- [DONE] Put this in a server somewhere, and expose an API. (serverless)
+  - [DONE] create an api that does the calls instead
+  - [DONE] make the extension call that API instead
+- [DONE] Limits the UI to only make the calls when a valid editable text is selected

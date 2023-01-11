@@ -1,3 +1,12 @@
+async function getCurrentTab() {
+  let queryOptions = { active: true, lastFocusedWindow: true };
+  let [tab] = await chrome.tabs.query(queryOptions);
+  return tab;
+}
+
+// global variable should probably be a class property
+let isContentEditable = false;
+
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
     "id": "bpolite",
@@ -6,16 +15,16 @@ chrome.runtime.onInstalled.addListener(() => {
   });
 });
 
-async function getCurrentTab() {
-  let queryOptions = { active: true, lastFocusedWindow: true };
-  let [tab] = await chrome.tabs.query(queryOptions);
-  return tab;
-}
+chrome.runtime.onMessage.addListener((obj, _sender, response) => {
+  const { isEditable } = obj;
+  isContentEditable = isEditable;
+  response();
+});
 
 chrome.contextMenus.onClicked.addListener(async (clickData) => {
   const message = clickData?.selectionText;
 
-  if (clickData.menuItemId == "bpolite" && message) {
+  if (isContentEditable && clickData.menuItemId == "bpolite" && message) {
     const tab = await getCurrentTab();
     const baseUrl = "https://bpolite-backend.vercel.app/api/transform-text";
     const body = { message };
