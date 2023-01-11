@@ -2,6 +2,8 @@
 - [NOT STARTED] show a loader or indicator that the request is being processed
 - [NOT STARTED] have a timeout for the how often you can make the calls
 - [NOT STARTED] have prettier extension icons
+- [NOT STARTED] add a license
+- [NOT STARTED] add a hotkey to enable it(?)
 - [NOT STARTED] minify the code?
 - [NOT STARTED] consider other types of elements that could be editable and expand on it
 
