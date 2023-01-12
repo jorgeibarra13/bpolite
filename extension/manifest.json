@@ -8,20 +8,20 @@
         "resources": ["../config.json"]
       }],
     "content_scripts": [{
-        "matches": ["http://*/*"],
+        "matches": ["https://*/*"],
         "js": [
-            "background.js"
+            "content.js"
         ]
       }],
     "action": {
-      "default_popup": "hello.html",
+      "default_popup": "extension.html",
       "default_icon": "./images/bp.png"
     },
     "background": {
     	"service_worker": "background.js"
     },
     "permissions": [
-        "background", "contextMenus"
+        "background", "contextMenus", "activeTab", "scripting"
     ],
     "icons": {
       "16": "./images/icon-bitty.png"
