@@ -10,18 +10,8 @@
   };
 
   const isElementEditable = (nodeName) => {
-    if (
-      nodeName.includes('p') ||
-      nodeName.includes('div') ||
-      nodeName.includes('body')
-    ) {
-      return false;
-    } else if (
-      nodeName.includes('input') ||
-      nodeName.includes('textarea')
-    )
-
-    return true;
+    if (nodeName == 'p' || nodeName == 'div' || nodeName == 'body') return false; 
+    else if ( nodeName == 'input' || nodeName == 'textarea') return true;
   }
 
   const replaceSelectionWithText = (text) => {
