@@ -24,7 +24,7 @@
     return true;
   }
 
-  const replaceTextWithProcession = (procession) => {
+  const replaceSelectionWithText = (text) => {
     const textarea = document.activeElement;
     const nodeNameString = document.activeElement.nodeName.toLocaleLowerCase();
 
@@ -36,14 +36,14 @@
       var before = textarea.value.slice(0, start);
       var after = textarea.value.slice(end);
 
-      var text = before + procession + after;
+      var text = before + text + after;
       textarea.value = text;
     }
   }
 
-  chrome.runtime.onMessage.addListener((obj, _sender, response) => {
-    const { procession } = obj;
-    replaceTextWithProcession(procession);
+  chrome.runtime.onMessage.addListener((message, _sender, response) => {
+    const { text } = message;
+    replaceSelectionWithText(text);
     response();
   });
 })();

@@ -46,7 +46,7 @@ chrome.contextMenus.onClicked.addListener(async (clickData) => {
     .then(res => {
       chrome.tabs.sendMessage(tab.id,
         {
-          procession: res?.transformed_text
+          text: res?.transformed_text
         }
       );
     })
