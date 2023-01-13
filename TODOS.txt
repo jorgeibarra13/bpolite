@@ -1,14 +1,12 @@
 P0s
-- [IN PROGRESS] transform doesn't work on gmail body, which is probably #1 place where u'd want to use
-- [IN PROGRESS] same above but test with google docs
-- [IN PROGRESS] same above but test with whatsapp 😭
-
+- [NOT STARTED] see if content script can be removed & move to tabs or execute script
 P1s
 - [NOT STARTED] show a loader or indicator that the request is being processed
 - [NOT STARTED] add a license
 - [NOT STARTED] have prettier extension icons
 - [NOT STARTED] add constants for strings etc etc
 - [NOT STARTED] have some ui testing
+- [NOT STARTED] same above but test with google docs (?)
 
 P2s
 - [NOT STARTED] consider other types of elements that could be editable and expand on it
@@ -16,6 +14,8 @@ P2s
 - [NOT STARTED] minify the code?
 
 DONEs
+- [DONE] transform doesn't work on gmail body, which is probably #1 place where u'd want to use
+- [DONE] same above but test with whatsapp 😭
 - [DONE] changed: block context menu while request is being processed
 - [BUGFIX] transform text only works once
 - [DONE] make the api handle the secret through a key vault or some other secure secret storage
