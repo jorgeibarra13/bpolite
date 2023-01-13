@@ -1,7 +1,7 @@
 async function getCurrentTab() {
   let queryOptions = { active: true, lastFocusedWindow: true };
-  let [tab] = await chrome.tabs.query(queryOptions);
-  return tab;
+  let tab = await chrome.tabs.query(queryOptions);
+  return [tab];
 }
 
 // global variable should probably be a class property
@@ -9,9 +9,10 @@ let isContentEditable = false;
 
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
-    "id": "bpolite",
-    "title": "Make it polite",
-    "contexts": ["selection"],
+    id: "bpolite",
+    title: "Make it polite",
+    contexts: ["selection"],
+    enabled: true,
   });
 });
 
@@ -29,6 +30,11 @@ chrome.contextMenus.onClicked.addListener(async (clickData) => {
     const baseUrl = "https://bpolite-backend.vercel.app/api/transform-text";
     const body = { message };
 
+    chrome.contextMenus.update("bpolite", {
+      enabled: false,
+      title: "Make it polite (please wait...)",
+    });
+
     fetch(baseUrl, {
         method: 'POST',
         headers: {
@@ -44,14 +50,18 @@ chrome.contextMenus.onClicked.addListener(async (clickData) => {
       return res.json();
     })
     .then(res => {
-      chrome.tabs.sendMessage(tab.id,
+      chrome.tabs.sendMessage(tab?.id,
         {
           text: res?.transformed_text
         }
       );
+      chrome.contextMenus.update("bpolite", {
+        title: "Make it polite",
+        enabled: true,
+      });
     })
     .catch((error) => {
-      console.error(`Error ${error.statusText}. Code:${error.status}`);
+      console.error(`Error message:${error.statusText}. Code:${error.status}. Error:${error}`);
     });
   }
 });

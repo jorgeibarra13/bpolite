@@ -1,33 +1,35 @@
+
+
 (() => {
-  window.onload = (_event) => {
-    document.addEventListener("select", async() => {
-      const isEditable = isElementEditable(document.activeElement.nodeName.toLocaleLowerCase());
 
-      chrome.runtime.sendMessage({
-        isEditable
-      });
-    })
-  };
+  document.activeElement.addEventListener("select", async(e) => {
+    if (!e.target.value) return;
+    const isEditable = isElementEditable(document.activeElement);
 
-  const isElementEditable = (nodeName) => {
+    chrome.runtime.sendMessage({
+      isEditable,
+    });
+  });
+
+  const isElementEditable = (activeElement) => {
+    const nodeName = activeElement?.nodeName?.toLocaleLowerCase();
     if (nodeName == 'p' || nodeName == 'div' || nodeName == 'body') return false; 
-    else if ( nodeName == 'input' || nodeName == 'textarea') return true;
+    else if (activeElement.isEditable || nodeName == 'input' || nodeName == 'textarea') return true;
   }
 
   const replaceSelectionWithText = (text) => {
-    const textarea = document.activeElement;
-    const nodeNameString = document.activeElement.nodeName.toLocaleLowerCase();
+    const activeElement = document.activeElement;
 
-    if (!isElementEditable(nodeNameString)) return;
-    if (typeof textarea.selectionStart === 'number' && typeof textarea.selectionEnd === 'number') {
-      var start = textarea.selectionStart;
-      var end = textarea.selectionEnd;
+    if (!isElementEditable(activeElement)) return;
+    if (typeof activeElement.selectionStart === 'number' && typeof activeElement.selectionEnd === 'number') {
+      var start = activeElement.selectionStart;
+      var end = activeElement.selectionEnd;
 
-      var before = textarea.value.slice(0, start);
-      var after = textarea.value.slice(end);
+      var before = activeElement.value.slice(0, start);
+      var after = activeElement.value.slice(end);
 
       var text = before + text + after;
-      textarea.value = text;
+      activeElement.value = text;
     }
   }
 

@@ -1,11 +1,23 @@
-- [NOT STARTED] have a timeout for the how often you can make the calls
+P0s
+- [IN PROGRESS] transform doesn't work on gmail body, which is probably #1 place where u'd want to use
+- [IN PROGRESS] same above but test with google docs
+- [IN PROGRESS] same above but test with whatsapp 😭
+
+P1s
 - [NOT STARTED] show a loader or indicator that the request is being processed
-- [NOT STARTED] have prettier extension icons
 - [NOT STARTED] add a license
+- [NOT STARTED] have prettier extension icons
+- [NOT STARTED] add constants for strings etc etc
+- [NOT STARTED] have some ui testing
+
+P2s
+- [NOT STARTED] consider other types of elements that could be editable and expand on it
 - [NOT STARTED] add a hotkey to enable it(?)
 - [NOT STARTED] minify the code?
-- [NOT STARTED] consider other types of elements that could be editable and expand on it
 
+DONEs
+- [DONE] changed: block context menu while request is being processed
+- [BUGFIX] transform text only works once
 - [DONE] make the api handle the secret through a key vault or some other secure secret storage
 - [DONE] The popup.js file is probably not needed anymore. Maybe we should delete it
 - [CHANGED] Display the processed message in a textbox. ie I type in a mail a body, select, right click and it shows a suggestion after the text, if I click enter on my keyboard it swaps the current text with the processed one.
