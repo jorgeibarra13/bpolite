@@ -1,3 +1,5 @@
+let rootDiv;
+
 (() => {
   document.addEventListener("mouseup", async(e) => {
     const isEditable = isElementEditable(document.activeElement);
@@ -39,12 +41,34 @@
   
       var text = before + text + after;
       node.textContent = text;
+
+      // disable spinner
+      rootDiv.remove();
     }
   }
 
+  const getSpinner = () => {
+    rootDiv = document.createElement('div');
+    rootDiv.className = "lds-ellipsis";
+    rootDiv.id = "#bpolitespinner";
+
+    for (let i = 0; i < 4; i++) {
+      rootDiv.appendChild(document.createElement('div'));
+    }
+
+    return rootDiv;
+  }
+
+  const enableSpinner = () => {
+    // for gmail body; replace using value selection
+    // const selection = document.getSelection()?.focusNode;
+    document.activeElement.appendChild(getSpinner());
+  }
+
   chrome.runtime.onMessage.addListener((message, _sender, response) => {
-    const { text } = message;
-    replaceSelectionWithText(text);
+    const { text, requestStarted  } = message;
+    requestStarted && enableSpinner();
+    text && replaceSelectionWithText(text);
     response();
   });
 })();

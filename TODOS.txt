@@ -4,7 +4,7 @@ P0s
 - [NOT STARTED] see if content script can be removed & move to tabs or execute script
 
 P1s
-- [NOT STARTED] show a loader or indicator that the request is being processed
+- [IN PROGRESS] show a loader or indicator that the request is being processed
 - [NOT STARTED] add a license
 - [NOT STARTED] have prettier extension icons
 
