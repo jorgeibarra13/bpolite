@@ -1,14 +1,20 @@
+----- MVP REQUIRED -----
+
 P0s
 - [NOT STARTED] see if content script can be removed & move to tabs or execute script
 
 P1s
 - [NOT STARTED] show a loader or indicator that the request is being processed
-- [NOT STARTED] check what sites of the manifest does it work with
 - [NOT STARTED] add a license
 - [NOT STARTED] have prettier extension icons
+
+
+----- NOT required for MVP -----
+
+P1s
+- [NOT STARTED] check what sites of the manifest does it work with (including gdocs)
 - [NOT STARTED] add constants for strings etc etc
 - [NOT STARTED] have some ui testing
-- [NOT STARTED] make sure it works with google docs (?)
 
 P2s
 - [NOT STARTED] consider other types of elements that could be editable and expand on it
