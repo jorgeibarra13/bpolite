@@ -7,6 +7,7 @@ P1s
 - [NOT STARTED] show a loader or indicator that the request is being processed
 - [NOT STARTED] add a license
 - [NOT STARTED] have prettier extension icons
+- [IN PROGRESS] add throttling on the backend
 
 
 ----- NOT required for MVP -----
