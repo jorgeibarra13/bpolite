@@ -2,6 +2,7 @@
 
 P0s
 - [NOT STARTED] see if content script can be removed & move to tabs or execute script
+- [NOT STARTED]  tunear el modelo del back
 
 P1s
 - [NOT STARTED] show a loader or indicator that the request is being processed
