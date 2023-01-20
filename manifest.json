@@ -16,7 +16,7 @@
       }],
     "action": {
       "default_popup": "extension.html",
-      "default_icon": "./images/bp.png"
+      "default_icon": "./images/edit.png"
     },
     "background": {
     	"service_worker": "background.js"
@@ -25,6 +25,6 @@
         "background", "contextMenus", "activeTab", "scripting"
     ],
     "icons": {
-      "16": "./images/icon-bitty.png"
+      "16": "./images/edit.png"
     }
   }

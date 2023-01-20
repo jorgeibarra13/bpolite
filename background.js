@@ -27,6 +27,11 @@ chrome.contextMenus.onClicked.addListener(async (clickData) => {
 
   if (isContentEditable && clickData.menuItemId == "bpolite" && message) {
     const tab = await getCurrentTab();
+
+    chrome.tabs.sendMessage(tab?.id, {
+      requestStarted: true
+    });
+
     const baseUrl = "https://bpolite-backend.vercel.app/api/transform-text";
     const body = { message };
 
