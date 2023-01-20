@@ -1,25 +1,24 @@
 ----- MVP REQUIRED -----
 
-
 P0s
 - [NOT STARTED] have prettier extension icons
-
-P1s
-- [NOT STARTED] see if content script can be removed & move to tabs or execute script
+- [NOT STARTED] tunear el modelo del back?? done??
 
 ----- NOT required for MVP -----
 
 P1s
-- [NOT STARTED] check what sites of the manifest does it work with (including gdocs)
+- [NOT STARTED] see if content script can be removed & move to tabs or execute script
+- [NOT STARTED] add a hotkey to enable it(?)
 - [NOT STARTED] add constants for strings etc etc
-- [NOT STARTED] have some ui testing
+- [NOT STARTED] check what sites of the manifest does it work with (including gdocs)
 
 P2s
 - [NOT STARTED] consider other types of elements that could be editable and expand on it
-- [NOT STARTED] add a hotkey to enable it(?)
 - [NOT STARTED] minify the code?
 
 DONEs
+- [REMOVED] have some ui testing nahh
+- [DONE] add throttling on the backend
 - [DONE] show an indicator that the request is being processed (replace text while it is being processed)
 - [DONE] add a license
 - [DONE] add throttling

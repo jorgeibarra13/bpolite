@@ -48,7 +48,7 @@ const placeHolder = '[Making the selected text more polite...]';
     }
   }
 
-  const enableSpinner = () => {
+  const showLoader = () => {
     const activeElement = document.activeElement;
 
     if (activeElement.value && (typeof activeElement.selectionStart === 'number' && typeof activeElement.selectionEnd === 'number')) {
@@ -76,7 +76,7 @@ const placeHolder = '[Making the selected text more polite...]';
 
   chrome.runtime.onMessage.addListener((message, _sender, response) => {
     const { text, requestStarted  } = message;
-    requestStarted && enableSpinner();
+    requestStarted && showLoader();
     text && replaceSelectionWithText(text);
     response();
   });
