@@ -22,7 +22,7 @@
     	"service_worker": "background.js"
     },
     "permissions": [
-        "background", "contextMenus", "activeTab", "scripting"
+        "contextMenus", "activeTab"
     ],
     "icons": {
       "16": "./images/edit.png"
